@@ -1,46 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Collection Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Availability Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Data Collection Form</h1>
+  <div class="container">
+    <h2>Hi User</h2>
+    <form id="loginForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
 
-    <label for="inputValue">Input Value:</label>
-    <input type="number" id="inputValue">
-    <button onclick="addToGitHub()">Submit</button>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
 
-    <script>
-        function addToGitHub() {
-            var value = document.getElementById('inputValue').value;
+      <button type="button" onclick="login()">Login</button>
+    </form>
 
-            // 使用 GitHub API 或其他方式將數據提交到 GitHub 存儲庫
-            // 這裡可能需要使用 GitHub Personal Access Token 進行身份驗證
+    <div id="availabilityForm" style="display: none;">
+      <h2>Choosing Form</h2>
+      <form>
+        <label for="day1">Monday:</label>
+                <label class="time-checkbox"><input type="checkbox" name="time1_day1" value="time1_day1"> 9:20～1200</label>
+                       <label class="time-checkbox"><input type="checkbox" name="time2_day1" value="time2_day1"> 12:00～14:40</label>
+                      <label class="time-checkbox"><input type="checkbox" name="time3_day1" value="time3_day1"> 14:40～17:20</label>
+                     <label class="time-checkbox"><input type="checkbox" name="time4_day1" value="time4_day1"> 17:20～20:00</label>
+                     <label class="time-checkbox"><input type="checkbox" name="time5_day1" value="time5_day1"> 20:00～22:40</label>
+                                    
 
-            // 以下是一個簡單的範例，使用 GitHub Issues API
-            fetch('https://api.github.com/repos/kinopio0205/TEST/issues', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': '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',
-                },
-                body: JSON.stringify({
-                    title: 'New Data Entry',
-                    body: `Value: ${value}`,
-                }),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('成功將數值添加到 GitHub 存儲庫', data);
-                })
-                .catch(error => {
-                    console.error('添加數值時出錯', error);
-                });
-        }
-    </script>
+        <label for="day2">Tuesday:</label>
+      <select id="time" name="time" required>
+                                          <option value="time1">9:20~12:00</option>
+        <option value="time2">12:00~14:40</option>
+        <option value="time3">14:40~15:20</option>
+        <option value="time4">15:20~20:00</option>
+        <option value="time5">20:00~22:40</option>
+                                        </select>
+
+        <label for="day3">Wednesday:</label>
+      <select id="time" name="time" required>
+                                          <option value="time1">9:20~12:00</option>
+        <option value="time2">12:00~14:40</option>
+        <option value="time3">14:40~15:20</option>
+        <option value="time4">15:20~20:00</option>
+        <option value="time5">20:00~22:40</option>
+                                        </select>
+
+        <label for="day4">Thursday:</label>
+        <select id="time" name="time" required>
+                                          <option value="time1">9:20~12:00</option>
+        <option value="time2">12:00~14:40</option>
+        <option value="time3">14:40~15:20</option>
+        <option value="time4">15:20~20:00</option>
+        <option value="time5">20:00~22:40</option>
+                                        </select>
+
+        <label for="day5">Friday:</label>
+    <select id="time" name="time" required>
+                                          <option value="time1">9:20~12:00</option>
+        <option value="time2">12:00~14:40</option>
+        <option value="time3">14:40~15:20</option>
+        <option value="time4">15:20~20:00</option>
+        <option value="time5">20:00~22:40</option>
+                                        </select>
+        
+    <label for="day6">Saturday:</label>
+                <select id="time" name="time" required>
+                                                 <option value="time1">9:20~12:00</option>
+               <option value="time2">12:00~14:40</option>
+               <option value="time3">14:40~15:20</option>
+               <option value="time4">15:20~20:00</option>
+               <option value="time5">20:00~22:40</option>
+                                               </select>
+            
+    <label for="day7">Sunday:</label>
+              <select id="time" name="time" required>
+                                  <option value="time1">9:20~12:00</option>
+<option value="time2">12:00~14:40</option>
+<option value="time3">14:40~15:20</option>
+<option value="time4">15:20~20:00</option>
+<option value="time5">20:00~22:40</option>
+                                </select>
+                
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      // Assuming a simple login validation
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      // Add your authentication logic here
+      if (username === "user1" && password === "password") {
+        // If login is successful, show the availability form
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("availabilityForm").style.display = "block";
+      } else {
+        alert("Login failed. Please check your username and password.");
+      }
+    }
+  </script>
 
 </body>
 </html>
