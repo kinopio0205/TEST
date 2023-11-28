@@ -128,7 +128,7 @@
                                 </select>
                 
 
-        <button type="submit">Submit</button>
+        <button type="submit" onclick="AddToGitHub()">Submit</button>
       </form>
     </div>
   </div>
@@ -148,6 +148,39 @@
         alert("Login failed. Please check your username and password.");
       }
     }
+      function AddToGitHub() {
+
+          // 替換為你的 GitHub 帳戶名、存儲庫名和個人訪問令牌
+          const username = 'kinopio0205';
+          const repo = 'TEST';
+          const token = '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';
+
+          // GitHub Issues API 的 URL
+          const apiUrl = `https://api.github.com/repos/${username}/${repo}/issues`;
+
+          // 新問題的數據
+          const issueData = {
+              title: 'New Issue',
+              body: 'This is the body of the new issue.',
+          };
+
+          // 使用 fetch API 發送 POST 請求以創建新的問題
+          fetch(apiUrl, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`,
+              },
+              body: JSON.stringify(issueData),
+          })
+              .then(response => response.json())
+              .then(data => {
+                  console.log('成功創建新問題', data);
+              })
+              .catch(error => {
+                  console.error('創建問題時出錯', error);
+              });
+      }
   </script>
 
 </body>
