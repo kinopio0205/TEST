@@ -103,7 +103,7 @@ var firestore = firebase.firestore();
                         
                 
 
-        <button type="submit" onclick="AddToGitHub()">Submit</button>
+        <button type="submit" >Submit</button>
       </form>
     </div>
   </div>
@@ -123,17 +123,10 @@ var firestore = firebase.firestore();
         alert("Login failed. Please check your username and password.");
       }
     }
-      function Read() {
-
-         
-
-  // 讀取 users 集合
-  firestore.collection('User').get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-      var data = doc.data();
-      console.log(data);
-    });
-      }
+      
+    
+    
+   
   </script>
 
 </body>
