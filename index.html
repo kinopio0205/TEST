@@ -123,7 +123,20 @@ var firestore = firebase.firestore();
         alert("Login failed. Please check your username and password.");
       }
     }
-      
+ </script>
+
+    <script>
+   function Read() {
+
+         
+
+  // 讀取 users 集合
+  firestore.collection('User').get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+      var data = doc.data();
+      console.log(data);
+    });
+      }
     
     
    
