@@ -59,7 +59,7 @@
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" required>
 
-      <button type="button" onclick="login()">Login</button>
+      <button type="button" onclick="Read()">Login</button>
     </form>
 
     <div id="availabilityForm" style="display: none;">
@@ -119,12 +119,12 @@
         alert("Login failed. Please check your username and password.");
       }
     }
-      function AddToGitHub() {
+      function Read() {
 
          var firestore = firebase.firestore();
 
   // 讀取 users 集合
-  firestore.collection('users').get().then(function(querySnapshot) {
+  firestore.collection('User').get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
       var data = doc.data();
       console.log(data);
