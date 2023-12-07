@@ -53,6 +53,26 @@
   <div class="container">
     <h2>Hi User</h2>
     <form id="loginForm">
+      <!-- 引入 Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+       <script>
+  
+
+    const firebaseConfig = {
+  apiKey: "AIzaSyA9qyQG92X8jT81DL43OqdOswx2GPcPnkE",
+  authDomain: "test-f3981.firebaseapp.com",
+  databaseURL: "https://test-f3981-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "test-f3981",
+  storageBucket: "test-f3981.appspot.com",
+  messagingSenderId: "585282719507",
+  appId: "1:585282719507:web:a4b3a7410bdf4576a6d4e6",
+  measurementId: "G-5D3LQ3KEEW"
+};
+  // 初始化 Firebase
+  firebase.initializeApp(firebaseConfig);
+var firestore = firebase.firestore();
+       </script>
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" required>
 
@@ -87,24 +107,8 @@
       </form>
     </div>
   </div>
-<!-- 引入 Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
 
   <script>
-    const firebaseConfig = {
-  apiKey: "AIzaSyA9qyQG92X8jT81DL43OqdOswx2GPcPnkE",
-  authDomain: "test-f3981.firebaseapp.com",
-  databaseURL: "https://test-f3981-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "test-f3981",
-  storageBucket: "test-f3981.appspot.com",
-  messagingSenderId: "585282719507",
-  appId: "1:585282719507:web:a4b3a7410bdf4576a6d4e6",
-  measurementId: "G-5D3LQ3KEEW"
-};
-
-  // 初始化 Firebase
-  firebase.initializeApp(firebaseConfig);
     function login() {
       // Assuming a simple login validation
       var username = document.getElementById("username").value;
@@ -121,7 +125,7 @@
     }
       function Read() {
 
-         var firestore = firebase.firestore();
+         
 
   // 讀取 users 集合
   firestore.collection('User').get().then(function(querySnapshot) {
