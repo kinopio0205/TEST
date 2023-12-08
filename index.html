@@ -73,7 +73,7 @@
   firebase.initializeApp(firebaseConfig);
 
          console.log(firebase);
-var firestore = firebase.firestore();
+const database = firebase.database();
        </script>
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" required>
@@ -129,20 +129,16 @@ var firestore = firebase.firestore();
    function readData() {
 
          
-try{
-  // 讀取 users 集合
-  firestore.collection('User').get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-      var data = doc.data();
-      console.log(data);
-      alert("Sucess");
-    });
-      });
-      alert("Done");
-}
-      catch{
-        alert("Fail");
-        }
+const dataRef = database.ref('User/UserAccount/Chris');
+
+dataRef.once('value')
+  .then(snapshot => {
+    const data = snapshot.val();
+    console.log("读取的数据：", data);
+  })
+  .catch(error => {
+    console.error("读取数据时发生错误：", error);
+  });
       }
     
     
