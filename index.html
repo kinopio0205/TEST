@@ -129,7 +129,7 @@ const database = firebase.database();
    function readData() {
 
          
-const dataRef = database.ref('User/UserAccount/Chris');
+const dataRef = database.ref('User');
 
 dataRef.once('value')
   .then(snapshot => {
