@@ -79,7 +79,7 @@ var firestore = firebase.firestore();
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" required>
 
-      <button type="button" onclick="readData()">Login</button>
+      <button type="button" onclick="readData()">ReadData</button>
     </form>
 
     <div id="availabilityForm" style="display: none;">
@@ -127,7 +127,7 @@ var firestore = firebase.firestore();
    function readData() {
 
          
-
+try{
   // 讀取 users 集合
   firestore.collection('User').get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
@@ -135,7 +135,10 @@ var firestore = firebase.firestore();
       console.log(data);
       alert("Sucess");
     });
-      };
+      };}
+      catch{
+        alert("Fail");
+        }
       }
     
     
