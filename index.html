@@ -79,7 +79,7 @@ var firestore = firebase.firestore();
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" required>
 
-      <button type="button" onclick="Read()">Login</button>
+      <button type="button" onclick="readData()">Login</button>
     </form>
 
     <div id="availabilityForm" style="display: none;">
@@ -123,10 +123,8 @@ var firestore = firebase.firestore();
         alert("Login failed. Please check your username and password.");
       }
     }
- </script>
-
-    <script>
-   function Read() {
+ 
+   function readData() {
 
          
 
