@@ -109,7 +109,7 @@ var firestore = firebase.firestore();
   </div>
 
   <script>
-    function readData() {
+    function login() {
       // Assuming a simple login validation
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
@@ -124,7 +124,7 @@ var firestore = firebase.firestore();
       }
     }
  
-   function login() {
+   function readData() {
 
          
 try{
@@ -135,7 +135,7 @@ try{
       console.log(data);
       alert("Sucess");
     });
-      };
+      });
       alert("Done");
 }
       catch{
