@@ -134,7 +134,20 @@ dataRef.get()
   .then(doc => {
     if(doc.exists){
       const data = doc.data();  
-      var username = '小小';
+    
+      console.log("读取的数据：", data);
+    }else{
+      console.log("文檔不存在");
+    }
+  })
+  .catch(error => {
+    console.error("读取数据时发生错误：", error);
+  });
+      }
+    function checkData() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+    var username = '小小';
       if (username in data) {
         if(data[username] == 'liru0402'){
           // If login is successful, show the availability form
@@ -149,16 +162,11 @@ dataRef.get()
       } else {
         alert("Login failed. Username wrong.");
       }
-      console.log("读取的数据：", data);
-    }else{
-      console.log("文檔不存在");
+
+
+
+      
     }
-  })
-  .catch(error => {
-    console.error("读取数据时发生错误：", error);
-  });
-      }
-    
     
    
   </script>
