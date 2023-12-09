@@ -131,12 +131,11 @@ const dataRef = database.collection('User').doc('UserAccount').doc;
       // Assuming a simple login validation
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
-
+const data;
 dataRef.get()
   .then(doc => {
     if(doc.exists){
-      const data = doc.data();
-      
+      data = doc.data();      
       console.log("读取的数据：", data);
     }else{
       console.log("文檔不存在");
