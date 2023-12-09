@@ -131,7 +131,7 @@ const dataRef = database.collection('User').doc('UserAccount').doc;
       // Assuming a simple login validation
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
-const data;
+var data;
 dataRef.get()
   .then(doc => {
     if(doc.exists){
