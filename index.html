@@ -136,7 +136,17 @@ dataRef.get()
   .then(doc => {
     if(doc.exists){
       const data = doc.data();
-      if (username in data) {
+      
+      console.log("读取的数据：", data);
+    }else{
+      console.log("文檔不存在");
+    }
+  })
+  .catch(error => {
+    console.error("读取数据时发生错误：", error);
+  });
+      }
+    if (username in data) {
         const datavalue = data[username];
         if(datavalue == password){
           // If login is successful, show the availability form
@@ -151,16 +161,6 @@ dataRef.get()
       } else {
         alert("Login failed. Username wrong.");
       }
-      console.log("读取的数据：", data);
-    }else{
-      console.log("文檔不存在");
-    }
-  })
-  .catch(error => {
-    console.error("读取数据时发生错误：", error);
-  });
-      }
-    
     
    
   </script>
