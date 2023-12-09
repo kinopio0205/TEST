@@ -135,20 +135,7 @@ dataRef.get()
   .then(doc => {
     if(doc.exists){
       const data = doc.data();   
-      if (username in data) {
-        if(data[username] == password){
-          // If login is successful, show the availability form
-          document.getElementById("loginForm").style.display = "none";
-          document.getElementById("availabilityForm").style.display = "block";
-          }
-          else
-          {
-            alert("Login failed. Password wrong.");
-          }
-
-      } else {
-        alert("Login failed. Username wrong.");
-      }
+    
       console.log("读取的数据：", data);
     }else{
       console.log("文檔不存在");
