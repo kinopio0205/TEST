@@ -125,8 +125,7 @@
     }
  
    function readData() {
-           var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
+
 
          
 const dataRef = database.collection('User').doc('UserAccount').doc;
@@ -134,9 +133,10 @@ const dataRef = database.collection('User').doc('UserAccount').doc;
 dataRef.get()
   .then(doc => {
     if(doc.exists){
-      const data = doc.data();   
+      const data = doc.data();  
+      var username = '小小';
       if (username in data) {
-        if(data[username] == password){
+        if(data[username] == 'liru0402'){
           // If login is successful, show the availability form
           document.getElementById("loginForm").style.display = "none";
           document.getElementById("availabilityForm").style.display = "block";
