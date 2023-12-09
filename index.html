@@ -73,7 +73,7 @@
   firebase.initializeApp(firebaseConfig);
 
          console.log(firebase);
-const database = firebase.database();
+const database = firebase.firestore();
        </script>
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" required>
@@ -129,12 +129,16 @@ const database = firebase.database();
    function readData() {
 
          
-const dataRef = database.ref('User/UserAccount');
+const dataRef = database.collection('User').doc('UserAccount');
 
-dataRef.once('value')
-  .then(snapshot => {
-    const data = snapshot.val();
-    console.log("读取的数据：", data);
+dataRef.get()
+  .then(doc => {
+    if(doc.exists){
+      const data = doc.data();
+      console.log("读取的数据：", data);
+    }else{
+      console.log("文檔不存在");
+    }
   })
   .catch(error => {
     console.error("读取数据时发生错误：", error);
