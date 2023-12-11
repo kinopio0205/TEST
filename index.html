@@ -191,15 +191,17 @@
                 labelElement.textContent = checkboxData.label;
                 labelElement.setAttribute('for', checkboxData.label);
 
+                  checkboxElement.style.display = 'inline-block';
+                  labelElement.style.display = 'inline-block';
                 // 將 checkbox 和 label 添加到容器中
                 container.appendChild(checkboxElement);
                 container.appendChild(labelElement);
-
+                container.appendChild(document.createElement('br'));
                 
                 });
                 // If login is successful, show the availability form
                   // 添加換行，使 checkbox 垂直排列
-                container.appendChild(document.createElement('br'));
+
                 });
                 document.getElementById("dynamicCheckboxesContainer").style.display = "block";
               }
