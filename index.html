@@ -134,7 +134,7 @@
    function readData() {
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;         
-      const dataRef = database.collection('User').doc('UserAccount').doc(username);
+      const dataRef = database.collection('User').doc('UserAccount');
       // Assuming a simple login validation
       dataRef.get()
         .then(doc => {
@@ -143,16 +143,48 @@
           if (username in data) {
             
               if(data[username] == password){
+                const data1 = data[username].data;
                 document.getElementById("loginForm").style.display = "none";
-                TimeMonday = data["1"];
-                TimeTuesday = data["2"];
-                 TimeWednesday = data["3"];
-                TimeThursday = data["4"];
-                TimeFriday = data["5"];
-                TimeSaturday = data["6"];
-                TimeSunday = data["7"];
+                TimeMonday = data1["1"];
+                TimeTuesday = data1["2"];
+                 TimeWednesday = data1["3"];
+                TimeThursday = data1["4"];
+                TimeFriday = data1["5"];
+                TimeSaturday = data1["6"];
+                TimeSunday = data1["7"];
 
-              
+                var dataCB = [
+                { label: '09:20~12:00', checked: TimeMonday[0]==='O' },
+                { label: '12:00~14:40', checked: TimeMonday[1]==='O' },
+                { label: '14:40~17:20:', checked: TimeMonday[2]==='O' },
+                 { label: '17:20~20:00', checked: TimeMonday[3]==='O' },
+                  { label: '20:00~22:40', checked: TimeMonday[4]==='O' }
+                ];
+                // 獲取包含動態生成 checkbox 的容器元素
+                var container = document.getElementById('dynamicCheckboxesContainer');
+
+                // 遍歷數據，動態生成 checkbox
+                dataCB.forEach(function (checkboxData) {
+                // 創建 checkbox 元素
+                var checkboxElement = document.createElement('input');
+                checkboxElement.type = 'checkbox';
+                checkboxElement.id = checkboxData.label;
+
+                // 如果 checked 屬性為 true，設置 checkbox 初始為勾選狀態
+                checkboxElement.checked = checkboxData.checked;
+
+                // 創建 label 元素，用於顯示 checkbox 文字
+                var labelElement = document.createElement('label');
+                labelElement.textContent = checkboxData.label;
+                labelElement.setAttribute('for', checkboxData.label);
+
+                // 將 checkbox 和 label 添加到容器中
+                container.appendChild(checkboxElement);
+                container.appendChild(labelElement);
+
+                // 添加換行，使 checkbox 垂直排列
+                container.appendChild(document.createElement('br'));
+                });
                 // If login is successful, show the availability form
 
                 document.getElementById("dynamicCheckboxesContainer").style.display = "block";
