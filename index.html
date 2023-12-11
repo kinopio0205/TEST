@@ -134,7 +134,7 @@
    function readData() {
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;         
-      const dataRef = database.collection('User').doc('UserAccount');
+      const dataRef = database.collection('User').doc('UserAccount').doc(username);
       // Assuming a simple login validation
       dataRef.get()
         .then(doc => {
@@ -144,13 +144,13 @@
             
               if(data[username] == password){
                 document.getElementById("loginForm").style.display = "none";
-                TimeMonday = data[username].'1';
-                TimeTuesday = data[username].'2';
-                 TimeWednesday = data[username].'3';
-                TimeThursday = data[username].'4';
-                TimeFriday = data[username].'5';
-                TimeSaturday = data[username].'6';
-                TimeSunday = data[username].'7';
+                TimeMonday = data["1"];
+                TimeTuesday = data["2"];
+                 TimeWednesday = data["3"];
+                TimeThursday = data["4"];
+                TimeFriday = data["5"];
+                TimeSaturday = data["6"];
+                TimeSunday = data["7"];
 
                 var data = [
                 { label: '09:20~12:00', checked: TimeMonday[0]==='O' },
