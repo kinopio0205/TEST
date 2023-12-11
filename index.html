@@ -109,6 +109,13 @@
   </div>
 
   <script>
+    var TimeMonday = "XXXXX";
+    var TimeTuesday = "XXXXX";
+    var TimeWednesday = "XXXXX";
+    var TimeThursday = "XXXXX";
+    var TimeFriday = "XXXXX";
+    var TimeSaturday = "XXXXX";
+    var TimeSunday = "XXXXX";
     function login() {
       // Assuming a simple login validation
       var username = document.getElementById("username").value;
@@ -125,41 +132,101 @@
     }
  
    function readData() {
-    var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
-
-         
-const dataRef = database.collection('User').doc('UserAccount');
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;         
+      const dataRef = database.collection('User').doc('UserAccount');
       // Assuming a simple login validation
-dataRef.get()
-  .then(doc => {
-    if(doc.exists){
-      const data = doc.data();  
-     if (username in data) {
-        if(data[username] == password){
-          // If login is successful, show the availability form
-          document.getElementById("loginForm").style.display = "none";
-          document.getElementById("availabilityForm").style.display = "block";
-          }
+      dataRef.get()
+        .then(doc => {
+        if(doc.exists){
+          const data = doc.data();  
+          if (username in data) {
+            
+              if(data[username] == password){
+                document.getElementById("loginForm").style.display = "none";
+                TimeMonday = data[username].1;
+                TimeTuesday = data[username].2;
+                 TimeWednesday = data[username].3;
+                TimeThursday = data[username].4;
+                TimeFriday = data[username].5;
+                TimeSaturday = data[username].6;
+                TimeSunday = data[username].7;
+
+                var data = [
+                { label: '09:20~12:00', checked: TimeMonday[0]==='O' },
+                { label: '12:00~14:40', checked: TimeMonday[1]==='O' },
+                { label: '14:40~17:20:', checked: TimeMonday[2]==='O' },
+                 { label: '17:20~20:00', checked: TimeMonday[3]==='O' },
+                  { label: '20:00~22:40', checked: TimeMonday[4]==='O' }
+                ];
+                // 獲取包含動態生成 checkbox 的容器元素
+                var container = document.getElementById('dynamicCheckboxesContainer');
+
+                // 遍歷數據，動態生成 checkbox
+                data.forEach(function (checkboxData) {
+                // 創建 checkbox 元素
+                var checkboxElement = document.createElement('input');
+                checkboxElement.type = 'checkbox';
+                checkboxElement.id = checkboxData.label;
+
+                // 如果 checked 屬性為 true，設置 checkbox 初始為勾選狀態
+                checkboxElement.checked = checkboxData.checked;
+
+                // 創建 label 元素，用於顯示 checkbox 文字
+                var labelElement = document.createElement('label');
+                labelElement.textContent = checkboxData.label;
+                labelElement.setAttribute('for', checkboxData.label);
+
+                // 將 checkbox 和 label 添加到容器中
+                container.appendChild(checkboxElement);
+                container.appendChild(labelElement);
+
+                // 添加換行，使 checkbox 垂直排列
+                container.appendChild(document.createElement('br'));
+                });
+                // If login is successful, show the availability form
+
+                //document.getElementById("availabilityForm").style.display = "block";
+              }
           else
           {
             alert("Login failed. Password wrong.");
           }
 
-      } else {
-        alert("Login failed. Username wrong.");
-      }
+          } else {
+              alert("Login failed. Username wrong.");
+          }
 
-      console.log("读取的数据：", data);
-    }else{
+        console.log("读取的数据：", data);
+        }else{
       console.log("文檔不存在");
-    }
-  })
-  .catch(error => {
-    console.error("读取数据时发生错误：", error);
-  });
       }
+      })
+      .catch(error => {
+      console.error("读取数据时发生错误：", error);
+    });
+    }
 
+    funtion WriteData()
+    {
+        const dataRef = database.collection('User').doc('UserAccount').doc(username);
+        dataRef.set({
+          1:TimeMonday,
+          2:TimeTuesday,
+          3:TimeWednesday,
+          4:TimeThursday,
+          5:TimeFriday,
+          6:TimeSaturday,
+          7:TimeSunday,
+        })
+        .then(function(){
+          alert("Write Success.");
+        })
+        .catch(funtion(error){
+          alert("Write Error: ",error);
+        });
+
+    }
    
   </script>
 
