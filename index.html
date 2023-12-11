@@ -134,13 +134,12 @@
    function readData() {
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;         
-      const dataRef = database.collection('User');
+      const dataRef = database.collection('User').doc(username);
       // Assuming a simple login validation
       dataRef.get()
         .then(doc => {
         if(doc.exists){
-          const data = doc.data();  
-          if (username in data) {
+                const data = doc.data();  
             
               if(data[username] == password){
                 const data1 = data[username].data;
@@ -192,10 +191,6 @@
           else
           {
             alert("Login failed. Password wrong.");
-          }
-
-          } else {
-              alert("Login failed. Username wrong.");
           }
 
         console.log("读取的数据：", data);
