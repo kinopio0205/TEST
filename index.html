@@ -134,7 +134,7 @@
    function readData() {
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;         
-      const dataRef = database.collection('User').doc('UserAccount');
+      const dataRef = database.collection('User');
       // Assuming a simple login validation
       dataRef.get()
         .then(doc => {
@@ -210,7 +210,7 @@
 
     function WriteData()
     {
-        const dataRef = database.collection('User').doc('UserAccount').doc(username);
+        const dataRef = database.collection('User').doc(username);
         dataRef.set({
           1:TimeMonday,
           2:TimeTuesday,
