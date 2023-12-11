@@ -141,16 +141,15 @@
         if(doc.exists){
                 const data = doc.data();  
             
-              if(data[username] == password){
-                const data1 = data[username].data;
+              if(data["password"] == password){
                 document.getElementById("loginForm").style.display = "none";
-                TimeMonday = data1["1"];
-                TimeTuesday = data1["2"];
-                 TimeWednesday = data1["3"];
-                TimeThursday = data1["4"];
-                TimeFriday = data1["5"];
-                TimeSaturday = data1["6"];
-                TimeSunday = data1["7"];
+                TimeMonday = data["1"];
+                TimeTuesday = data["2"];
+                 TimeWednesday = data["3"];
+                TimeThursday = data["4"];
+                TimeFriday = data["5"];
+                TimeSaturday = data["6"];
+                TimeSunday = data["7"];
 
                 var dataCB = [
                 { label: '09:20~12:00', checked: TimeMonday[0]==='O' },
