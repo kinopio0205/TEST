@@ -150,7 +150,16 @@
                 TimeFriday = data["5"];
                 TimeSaturday = data["6"];
                 TimeSunday = data["7"];
-
+                var dataWeek = [
+                   { label: 'Monday:'},
+                { label: 'Tuesday:'},
+                { label: 'Wednesday:'},
+                 { label: 'Thursday:'},
+                  { label: 'Friday:'},
+                  { label: 'Saturday:'},
+                  { label: 'Sunday:'}
+                ];
+                var index =0;
                 var dataCB = [
                 { label: '09:20~12:00', checked: TimeMonday[0]==='O' },
                 { label: '12:00~14:40', checked: TimeMonday[1]==='O' },
@@ -160,7 +169,11 @@
                 ];
                 // 獲取包含動態生成 checkbox 的容器元素
                 var container = document.getElementById('dynamicCheckboxesContainer');
-
+                dataWeek.forEach(function (LabelData){
+                  // 創建 checkbox 元素
+                 var labelElement = document.createElement('label');
+                labelElement.textContent = LabelData.label;
+                labelElement.setAttribute('for', LabelData.label);
                 // 遍歷數據，動態生成 checkbox
                 dataCB.forEach(function (checkboxData) {
                 // 創建 checkbox 元素
@@ -184,7 +197,7 @@
                 container.appendChild(document.createElement('br'));
                 });
                 // If login is successful, show the availability form
-
+                }
                 document.getElementById("dynamicCheckboxesContainer").style.display = "block";
               }
           else
