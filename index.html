@@ -152,7 +152,7 @@
                 TimeSaturday = data["6"];
                 TimeSunday = data["7"];
 
-                var data = [
+                var dataCB = [
                 { label: '09:20~12:00', checked: TimeMonday[0]==='O' },
                 { label: '12:00~14:40', checked: TimeMonday[1]==='O' },
                 { label: '14:40~17:20:', checked: TimeMonday[2]==='O' },
@@ -163,7 +163,7 @@
                 var container = document.getElementById('dynamicCheckboxesContainer');
 
                 // 遍歷數據，動態生成 checkbox
-                data.forEach(function (checkboxData) {
+                dataCB.forEach(function (checkboxData) {
                 // 創建 checkbox 元素
                 var checkboxElement = document.createElement('input');
                 checkboxElement.type = 'checkbox';
