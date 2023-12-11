@@ -81,7 +81,7 @@
 
       <button type="button" onclick="readData()">ReadData</button>
     </form>
-
+     <div id="dynamicCheckboxesContainer" style="display: none;">
     <div id="availabilityForm" style="display: none;">
       <h2>Choosing Form</h2>
       <form>
@@ -186,7 +186,7 @@
                 });
                 // If login is successful, show the availability form
 
-                //document.getElementById("availabilityForm").style.display = "block";
+                document.getElementById("dynamicCheckboxesContainer").style.display = "block";
               }
           else
           {
