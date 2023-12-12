@@ -117,7 +117,9 @@
     <form id="ChooseForm" style="display: none;">
       <br>
       <br>
+      <br>
       <button type="button" onclick="OpenPassword(true)">修改密碼</button>
+      <br>
       <br>
       <br>
       <button type="button" onclick="readData()">選擇時間</button>
@@ -178,7 +180,7 @@
     }
    
    function readData() {     
-
+      dataRef = database.collection('User').doc(username);
       dataRef.get()
         .then(doc => {
         if(doc.exists){
