@@ -27,8 +27,8 @@
     form {
         background: url('Image.JPG') no-repeat;
         background-position : right center;
-        background-size: cover; 
-        width:50%;
+        background-size: 50%; 
+        width:100%;
     }
     body {
       font-family: Arial, sans-serif;
@@ -75,7 +75,7 @@
 
          #dynamicCheckboxesContainer {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 兩列，每列等寬 */
+            grid-template-columns: repeat(7, 1fr); /* 兩列，每列等寬 */
             grid-gap: 10px; /* 列和行之間的間距 */
         }
 
@@ -199,12 +199,16 @@
                 // 獲取包含動態生成 checkbox 的容器元素
                 var container = document.getElementById('dynamicCheckboxesContainer');
                 dataWeek.forEach(function (LabelData){
+                              // 在容器中创建新的子控件元素
+                var newGridItem = document.createElement('div');
+                newGridItem.className = 'grid-item';
+                newGridItem.textContent = 'Control1 ';
                   // 創建 checkbox 元素
                  var label1Element = document.createElement('label');
                 label1Element.textContent = LabelData.label;
                 label1Element.setAttribute('for', LabelData.label);
-                container.appendChild(label1Element);
-                container.appendChild(document.createElement('br'));
+                newGridItem.appendChild(label1Element);
+                newGridItem.appendChild(document.createElement('br'));
                 // 遍歷數據，動態生成 checkbox
                 dataCB.forEach(function (checkboxData) {
                 // 創建 checkbox 元素
@@ -222,11 +226,12 @@
                   checkboxElement.style.display = 'inline-block';
                   labelElement.style.display = 'inline-block';
                 // 將 checkbox 和 label 添加到容器中
-                container.appendChild(checkboxElement);
-                container.appendChild(labelElement);
-                container.appendChild(document.createElement('br'));
+                newGridItem.appendChild(checkboxElement);
+                newGridItem.appendChild(labelElement);
+                 newGridItem.appendChild(document.createElement('br'));
                 
                 });
+                  container.appendChild(newGridItem);
                 // If login is successful, show the availability form
                   // 添加換行，使 checkbox 垂直排列
 
