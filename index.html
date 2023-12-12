@@ -75,7 +75,8 @@
 
          #dynamicCheckboxesContainer {
             display: grid;
-            grid-template-columns: repeat(7, 1fr); /* 兩列，每列等寬 */
+            grid-template-columns: repeat(4, 1fr); /* 兩列，每列等寬 */
+           grid-template-rows: repeat(2, 1fr);
             grid-gap: 10px; /* 列和行之間的間距 */
         }
 
@@ -89,6 +90,12 @@
         /* 讓內部的表單擴展滿整個網格行 */
         #nestedForm {
             grid-column: span 2;
+        }
+
+    
+    #greeting {
+            background-color: rgba(255, 0, 0, 0.5); /* 使用 rgba 表示法设置背景颜色，透明度为 0.5 */
+            padding: 10px; /* 添加一些内边距以增加可读性 */
         }
   </style>
 </head>
@@ -106,7 +113,7 @@
       <br>
       <input type="password" style = "width: 50%; margin-left: 0px;" id="password" name="password" required>
       <br>
-      <button type="button" onclick="readData()">ReadData</button>
+      <button type="button" onclick="readData()">Login</button>
     </form>
     <div id="dynamicCheckboxesContainer" style="display: none;">
     <div id="availabilityForm" style="display: none;">
@@ -202,12 +209,7 @@
                               // 在容器中创建新的子控件元素
                 var newGridItem = document.createElement('div');
                 newGridItem.className = 'grid-item';
-                newGridItem.textContent = 'Control1 ';
-                  // 創建 checkbox 元素
-                 var label1Element = document.createElement('label');
-                label1Element.textContent = LabelData.label;
-                label1Element.setAttribute('for', LabelData.label);
-                newGridItem.appendChild(label1Element);
+                newGridItem.textContent = LabelData.label;
                 newGridItem.appendChild(document.createElement('br'));
                 // 遍歷數據，動態生成 checkbox
                 dataCB.forEach(function (checkboxData) {
