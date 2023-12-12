@@ -112,7 +112,7 @@
       <br>
       <input type="password" style = "width: 50%; margin-left: 0px;" id="password" name="password" required>
       <br>
-      <button type="button" onclick="readData()">Login</button>
+      <button type="button" onclick="Login()">Login</button>
     </form>
     <form id="ChooseForm">
       <br>
@@ -140,27 +140,49 @@
     <div id="dynamicCheckboxesContainer" style="display: none;">    </div>
 
   <script>
-    var All = new Array(35).fill("X");;
+    var All = new Array(35).fill("X");
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+     
     function OpenPassword(IsOpen) {
       document.getElementById("ChooseForm").style.display = IsOpen?"block":"none";
       document.getElementById("PasswordForm").style.display = IsOpen?"none":"block";
     }
    function Login(){
-   }
-   function readData() {
        username = document.getElementById("username").value;
-      password = document.getElementById("password").value;         
-      const dataRef = database.collection('User').doc(username);
-      // Assuming a simple login validation
+        password = document.getElementById("password").value; 
+        var dataRef = database.collection('User').doc(username);
+        dataRef.get()
+        .then(doc => {
+        if(doc.exists){
+                const data = doc.data();              
+              if(data["password"] == password){
+               var greetingElement = document.getElementById("greeting");
+                greetingElement.innerText = "Hello," + username +"!"; // 修改文字內容
+                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("ChooseForm").style.display = "block";
+               }
+              else
+              {
+            alert("Login failed. Password wrong.");
+              }
+      console.log("读取的数据：", data);
+        }else{
+      console.log("文檔不存在");
+      }
+      })
+      .catch(error => {
+      console.error("读取数据时发生错误：", error);
+    });
+    }
+   
+   function readData() {     
+
       dataRef.get()
         .then(doc => {
         if(doc.exists){
                 const data = doc.data();  
-            
-              if(data["password"] == password){
-                var greetingElement = document.getElementById("greeting");
-                greetingElement.innerText = "Hello," + username +"!"; // 修改文字內容
-                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("ChooseForm").style.display = "none";
                 var g = 0 ;
                 for(var k =1;k<=7;k++)
                   {
@@ -235,13 +257,6 @@
                 buttonElement.addEventListener("click", WriteData);
                  container.appendChild(buttonElement);
                 document.getElementById("dynamicCheckboxesContainer").style.display = "grid";      
-               
-              }
-          else
-          {
-            alert("Login failed. Password wrong.");
-          }
-
         console.log("读取的数据：", data);
         }else{
       console.log("文檔不存在");
