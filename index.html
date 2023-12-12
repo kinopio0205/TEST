@@ -149,8 +149,9 @@
       document.getElementById("PasswordForm").style.display = IsOpen?"none":"block";
     }
    function Login(){
-       username = document.getElementById("username").value;
+        username = document.getElementById("username").value;
         password = document.getElementById("password").value; 
+         console.log("Username：", username);
         var dataRef = database.collection('User').doc(username);
         dataRef.get()
         .then(doc => {
@@ -270,9 +271,7 @@
     function WriteData()
     {
        const chunkSize = 5;
-
       var newArray = [];
-
       for (let i = 0; i < All.length; i += chunkSize) {
         const chunk = All.slice(i, i + chunkSize);
         newArray.push(chunk);
@@ -280,9 +279,9 @@
       console.log( newArray);
         const dataRef = database.collection('User').doc(username);
       const dataToUpdate = {};
-    newArray.forEach((chunk, index) => {
+      newArray.forEach((chunk, index) => {
       dataToUpdate[index + 1] = chunk;
-}    );
+      });
         dataRef.set(dataToUpdate)
         .then(function(){
           alert("Write Success.");
@@ -290,7 +289,6 @@
         .catch(function(error){
           alert("Write Error: ",error);
         });
-
     }
    
   </script>
