@@ -134,8 +134,8 @@
     }
  
    function readData() {
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;         
+       username = document.getElementById("username").value;
+      password = document.getElementById("password").value;         
       const dataRef = database.collection('User').doc(username);
       // Assuming a simple login validation
       dataRef.get()
@@ -203,7 +203,6 @@
                 // 获取当前 checkbox 的索引
                 var index = parseInt(event.target.id.slice(8));
                 All[index] = event.target.checked ? "O" : "X";
-                                    console.log( All);
             });
                 // 將 checkbox 和 label 添加到容器中
                 newGridItem.appendChild(checkboxElement);
