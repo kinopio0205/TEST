@@ -124,13 +124,6 @@
   </div>
 
   <script>
-    var TimeMonday = "XXXXX";
-    var TimeTuesday = "XXXXX";
-    var TimeWednesday = "XXXXX";
-    var TimeThursday = "XXXXX";
-    var TimeFriday = "XXXXX";
-    var TimeSaturday = "XXXXX";
-    var TimeSunday = "XXXXX";
     var All = new Array(35).fill("X");;
     function login() {
       // Assuming a simple login validation
@@ -203,7 +196,7 @@
                 checkboxElement.type = 'checkbox';
                 checkboxElement.id =  'checkbox'+i;
                 // 如果 checked 屬性為 true，設置 checkbox 初始為勾選狀態
-                checkboxElement.checked = All[i]=="O"?;
+                checkboxElement.checked = All[i]=="O";
 
                 // 創建 label 元素，用於顯示 checkbox 文字
                 var labelElement = document.createElement('label');
