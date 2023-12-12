@@ -114,13 +114,11 @@
       <br>
       <button type="button" onclick="readData()">Login</button>
     </form>
-    <div id="dynamicCheckboxesContainer" style="display: none;">
+    <div id="dynamicCheckboxesContainer" style="display: none;">    </div>
     <div id="availabilityForm" style="display: none;">
-      <h2>Choosing Form</h2>
       <form>                                       
         <button type="submit" >Submit</button>
       </form>
-    </div>
   </div>
 
   <script>
@@ -208,7 +206,7 @@
 
                   checkboxElement.addEventListener('change', function(event) {
                 // 获取当前 checkbox 的索引
-                var index = parseInt(event.target.id.slice(-1));
+                var index = parseInt(event.target.id.slice(8));
                 All[index] = event.target.checked ? "O" : "X";
                 console.log( All);
             });
