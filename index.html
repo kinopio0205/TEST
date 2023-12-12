@@ -114,25 +114,39 @@
       <br>
       <button type="button" onclick="readData()">Login</button>
     </form>
+    <form id="ChooseForm">
+      <br>
+      <br>
+      <button type="button" onclick="OpenPassword(true)">修改密碼</button>
+      <br>
+      <br>
+      <button type="button" onclick="readData()">選擇時間</button>
+    </form>
+    <form id="PasswordForm">
+      <label for="oldpassword">OldPassword:</label>
+      <br>
+      <input type="oldpassword" style = "width: 50%; margin-left: 0px;" id="oldpassword" name="oldpassword" required>
+      <br>
+      <label for="newpassword">New Password:</label>
+      <br>
+      <input type="newpassword" style = "width: 50%; margin-left: 0px;" id="newpassword" name="newpassword" required>
+      <br>
+      <label for="newpasswordC">New Password Check:</label>
+      <br>
+      <input type="newpasswordC" style = "width: 50%; margin-left: 0px;" id="newpasswordC" name="newpasswordC" required>
+      <br>
+      <button type="button" onclick="OpenPassword(false)">Confirm</button>
+    </form>
     <div id="dynamicCheckboxesContainer" style="display: none;">    </div>
 
   <script>
     var All = new Array(35).fill("X");;
-    function login() {
-      // Assuming a simple login validation
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
-
-      // Add your authentication logic here
-      if (username === "user1" && password === "password") {
-        // If login is successful, show the availability form
-        document.getElementById("loginForm").style.display = "none";
-        document.getElementById("availabilityForm").style.display = "block";
-      } else {
-        alert("Login failed. Please check your username and password.");
-      }
+    function OpenPassword(IsOpen) {
+      document.getElementById("ChooseForm").style.display = IsOpen?"block":"none";
+      document.getElementById("PasswordForm").style.display = IsOpen?"none":"block";
     }
- 
+   function Login(){
+   }
    function readData() {
        username = document.getElementById("username").value;
       password = document.getElementById("password").value;         
