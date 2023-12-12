@@ -117,7 +117,7 @@
     <div id="dynamicCheckboxesContainer" style="display: none;">    </div>
     <div id="availabilityForm" style="display: none;">
       <form>                                       
-        <button type="submit" >Submit</button>
+        <button type="submit onclick="WriteData()" >Submit</button>
       </form>
   </div>
 
@@ -208,7 +208,7 @@
                 // 获取当前 checkbox 的索引
                 var index = parseInt(event.target.id.slice(8));
                 All[index] = event.target.checked ? "O" : "X";
-                console.log( All);
+                                    console.log( All);
             });
                 // 將 checkbox 和 label 添加到容器中
                 newGridItem.appendChild(checkboxElement);
@@ -250,6 +250,7 @@
         const chunk = All.slice(i, i + chunkSize);
         newArray.push(chunk);
       }
+      console.log( newArray);
         const dataRef = database.collection('User').doc(username);
       
         dataRef.set({
