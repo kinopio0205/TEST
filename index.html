@@ -152,12 +152,12 @@
         username = document.getElementById("username").value;
         password = document.getElementById("password").value; 
          console.log("Username：", username);
-        var dataRef = database.collection('User').doc(username);
+        var dataRef = database.collection('User').doc("UserAccount");
         dataRef.get()
         .then(doc => {
         if(doc.exists){
                 const data = doc.data();              
-              if(data["password"] == password){
+              if(data[username] == password){
                var greetingElement = document.getElementById("greeting");
                 greetingElement.innerText = "Hello," + username +"!"; // 修改文字內容
                 document.getElementById("loginForm").style.display = "none";
