@@ -48,11 +48,12 @@
     }
 
     input {
-      width: 100%;
       padding: 8px;
       margin-bottom: 16px;
       box-sizing: border-box;
     }
+
+
 
     button {
       background-color: #4caf50;
@@ -75,10 +76,10 @@
     <form id="loginForm">
 
       <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required>
+      <input type="text" style = "width: 100%;" id="username" name="username" required>
 
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
+      <input type="password" style = "width: 100%;" id="password" name="password" required>
 
       <button type="button" onclick="readData()">ReadData</button>
     </form>
@@ -182,7 +183,7 @@
                 var checkboxElement = document.createElement('input');
                 checkboxElement.type = 'checkbox';
                 checkboxElement.id = checkboxData.label;
-
+                checkboxElement.
                 // 如果 checked 屬性為 true，設置 checkbox 初始為勾選狀態
                 checkboxElement.checked = checkboxData.checked;
 
