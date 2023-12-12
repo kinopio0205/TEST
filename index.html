@@ -75,8 +75,8 @@
 
          #dynamicCheckboxesContainer {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 兩列，每列等寬 */
-           grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr); /* 兩列，每列等寬 */
+           grid-template-rows: repeat(4, 1fr);
             grid-gap: 10px; /* 列和行之間的間距 */
         }
 
@@ -84,7 +84,6 @@
         .grid-item {
             border: 1px solid #ccc;
             padding: 10px;
-            text-align: center;
         }
 
         /* 讓內部的表單擴展滿整個網格行 */
@@ -94,7 +93,7 @@
 
     
     #greeting {
-            background-color: rgba(255, 0, 0, 0.5); /* 使用 rgba 表示法设置背景颜色，透明度为 0.5 */
+            background-color: rgba(255, 0, 0, 1); /* 使用 rgba 表示法设置背景颜色，透明度为 0.5 */
             padding: 10px; /* 添加一些内边距以增加可读性 */
         }
   </style>
@@ -238,7 +237,7 @@
                   // 添加換行，使 checkbox 垂直排列
 
                 });
-                document.getElementById("dynamicCheckboxesContainer").style.display = "block";
+                document.getElementById("dynamicCheckboxesContainer").style.display = "inline-block";                
               }
           else
           {
