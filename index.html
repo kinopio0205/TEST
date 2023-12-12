@@ -93,7 +93,7 @@
 
     
     #greeting {
-            background-color: rgba(255, 0, 0, 1); /* 使用 rgba 表示法设置背景颜色，透明度为 0.5 */
+            background-color: rgba(255, 0, 0, 0); /* 使用 rgba 表示法设置背景颜色，透明度为 0.5 */
             padding: 10px; /* 添加一些内边距以增加可读性 */
         }
   </style>
@@ -117,25 +117,7 @@
     <div id="dynamicCheckboxesContainer" style="display: none;">
     <div id="availabilityForm" style="display: none;">
       <h2>Choosing Form</h2>
-      <form>
-        <label class="day1">Monday:</label>
-                <input type="checkbox" id="time1_day1" name="time1_day1" required>
-                <label for="time1_day1">9:20～12:00</label>
-
-                <input type="checkbox" id="time2_day1" name="time2_day1" required>
-                <label for="time2_day1">12:00～14:40</label>
-
-                <input type="checkbox" id="time3_day1" name="time3_day1" required>
-                <label for="time3_day1">14:40～17:20</label>
-
-                <input type="checkbox" id="time4_day1" name="time4_day1" required>
-                <label for="time4_day1">17:20～20:00</label>
-
-                <input type="checkbox" id="time5_day1" name="time5_day1" required>
-                <label for="time5_day1">20:00～22:40</label>
-                        
-                
-
+      <form>                                       
         <button type="submit" >Submit</button>
       </form>
     </div>
@@ -149,7 +131,7 @@
     var TimeFriday = "XXXXX";
     var TimeSaturday = "XXXXX";
     var TimeSunday = "XXXXX";
-    var All = [];
+    var All = new Array(35).fill("X");;
     function login() {
       // Assuming a simple login validation
       var username = document.getElementById("username").value;
@@ -246,7 +228,9 @@
                   // 添加換行，使 checkbox 垂直排列
 
                 });
-                document.getElementById("dynamicCheckboxesContainer").style.display = "inline-block";                
+                document.getElementById("dynamicCheckboxesContainer").style.display = "grid";      
+                document.getElementById(" availabilityForm").style.display = "block";    
+               
               }
           else
           {
@@ -265,15 +249,24 @@
 
     function WriteData()
     {
+       const chunkSize = 5;
+
+      const newArray = [];
+
+      for (let i = 0; i < All.length; i += chunkSize) {
+        const chunk = All.slice(i, i + chunkSize);
+        newArray.push(chunk);
+      }
         const dataRef = database.collection('User').doc(username);
+      
         dataRef.set({
-          1:TimeMonday,
-          2:TimeTuesday,
-          3:TimeWednesday,
-          4:TimeThursday,
-          5:TimeFriday,
-          6:TimeSaturday,
-          7:TimeSunday,
+          1:newArray[0],
+          2:newArray[1],
+          3:newArray[2],
+          4:newArray[3],
+          5:newArray[4],
+          6:newArray[5],
+          7:newArray[6],
         })
         .then(function(){
           alert("Write Success.");
