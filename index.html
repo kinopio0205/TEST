@@ -177,6 +177,7 @@
                 label1Element.textContent = LabelData.label;
                 label1Element.setAttribute('for', LabelData.label);
                 container.appendChild(label1Element);
+                container.appendChild(document.createElement('br'));
                 // 遍歷數據，動態生成 checkbox
                 dataCB.forEach(function (checkboxData) {
                 // 創建 checkbox 元素
