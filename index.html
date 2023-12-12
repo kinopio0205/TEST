@@ -27,7 +27,7 @@
     form {
         background: url('Image.JPG') no-repeat;
         background-position : right center;
-        background-size: 50%; 
+        background-size: 45%; 
         width:100%;
     }
     body {
@@ -149,6 +149,7 @@
     var TimeFriday = "XXXXX";
     var TimeSaturday = "XXXXX";
     var TimeSunday = "XXXXX";
+    var All = [];
     function login() {
       // Assuming a simple login validation
       var username = document.getElementById("username").value;
@@ -204,6 +205,7 @@
                 ];
                 // 獲取包含動態生成 checkbox 的容器元素
                 var container = document.getElementById('dynamicCheckboxesContainer');
+                var i =0;
                 dataWeek.forEach(function (LabelData){
                               // 在容器中创建新的子控件元素
                 var newGridItem = document.createElement('div');
@@ -215,7 +217,7 @@
                 // 創建 checkbox 元素
                 var checkboxElement = document.createElement('input');
                 checkboxElement.type = 'checkbox';
-                checkboxElement.id = checkboxData.label;
+                checkboxElement.id =  'checkbox'+i;
                 // 如果 checked 屬性為 true，設置 checkbox 初始為勾選狀態
                 checkboxElement.checked = checkboxData.checked;
 
@@ -226,6 +228,13 @@
 
                   checkboxElement.style.display = 'inline-block';
                   labelElement.style.display = 'inline-block';
+
+                  checkboxElement.addEventListener('change', function(event) {
+                // 获取当前 checkbox 的索引
+                var index = parseInt(event.target.id.slice(-1));
+                All[index] = event.target.checked ? "O" : "X";
+                console.log( All);
+            });
                 // 將 checkbox 和 label 添加到容器中
                 newGridItem.appendChild(checkboxElement);
                 newGridItem.appendChild(labelElement);
