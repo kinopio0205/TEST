@@ -161,13 +161,15 @@
                 var greetingElement = document.getElementById("greeting");
                 greetingElement.innerText = "Hello," + username +"!"; // 修改文字內容
                 document.getElementById("loginForm").style.display = "none";
-                TimeMonday = data["1"];
-                TimeTuesday = data["2"];
-                 TimeWednesday = data["3"];
-                TimeThursday = data["4"];
-                TimeFriday = data["5"];
-                TimeSaturday = data["6"];
-                TimeSunday = data["7"];
+                const g = 0 ;
+                for(var k =1;k<=7;k++)
+                  {
+                    for(var j=0;j<5;j++)
+                      {                    
+                        All[g] = data[k][j];
+                        g++;
+                          }
+                  }
                 var dataWeek = [
                    { label: 'Monday:'},
                 { label: 'Tuesday:'},
@@ -179,11 +181,11 @@
                 ];
                 var index =0;
                 var dataCB = [
-                { label: '09:20~12:00', checked: TimeMonday[0]==='O' },
-                { label: '12:00~14:40', checked: TimeMonday[1]==='O' },
-                { label: '14:40~17:20:', checked: TimeMonday[2]==='O' },
-                 { label: '17:20~20:00', checked: TimeMonday[3]==='O' },
-                  { label: '20:00~22:40', checked: TimeMonday[4]==='O' }
+                { label: '09:20~12:00'},
+                { label: '12:00~14:40'},
+                { label: '14:40~17:20:'},
+                 { label: '17:20~20:00'},
+                  { label: '20:00~22:40' }
                 ];
                 // 獲取包含動態生成 checkbox 的容器元素
                 var container = document.getElementById('dynamicCheckboxesContainer');
@@ -201,7 +203,7 @@
                 checkboxElement.type = 'checkbox';
                 checkboxElement.id =  'checkbox'+i;
                 // 如果 checked 屬性為 true，設置 checkbox 初始為勾選狀態
-                checkboxElement.checked = checkboxData.checked;
+                checkboxElement.checked = All[i]=="O"?;
 
                 // 創建 label 元素，用於顯示 checkbox 文字
                 var labelElement = document.createElement('label');
@@ -221,7 +223,7 @@
                 newGridItem.appendChild(checkboxElement);
                 newGridItem.appendChild(labelElement);
                  newGridItem.appendChild(document.createElement('br'));
-                
+                i++;
                 });
                   container.appendChild(newGridItem);
                 // If login is successful, show the availability form
