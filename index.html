@@ -154,7 +154,7 @@
                 var greetingElement = document.getElementById("greeting");
                 greetingElement.innerText = "Hello," + username +"!"; // 修改文字內容
                 document.getElementById("loginForm").style.display = "none";
-                const g = 0 ;
+                var g = 0 ;
                 for(var k =1;k<=7;k++)
                   {
                     for(var j=0;j<5;j++)
@@ -246,7 +246,7 @@
     {
        const chunkSize = 5;
 
-      const newArray = [];
+      var newArray = [];
 
       for (let i = 0; i < All.length; i += chunkSize) {
         const chunk = All.slice(i, i + chunkSize);
