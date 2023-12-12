@@ -115,11 +115,6 @@
       <button type="button" onclick="readData()">Login</button>
     </form>
     <div id="dynamicCheckboxesContainer" style="display: none;">    </div>
-    <div id="availabilityForm" style="display: none;">
-      <form>                                       
-        <button type="summit" onclick="WriteData()" >Submit</button>
-      </form>
-  </div>
 
   <script>
     var All = new Array(35).fill("X");;
@@ -221,8 +216,12 @@
                   // 添加換行，使 checkbox 垂直排列
 
                 });
+                 var buttonElement = document.createElement('button');
+                buttonElement.textContent = "Summit";
+               // 添加 click 事件监听器
+                buttonElement.addEventListener("click", WriteData());
+                 container.appendChild(buttonElement);
                 document.getElementById("dynamicCheckboxesContainer").style.display = "grid";      
-                document.getElementById("availabilityForm").style.display = "block";    
                
               }
           else
