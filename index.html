@@ -251,16 +251,11 @@
       }
       console.log( newArray);
         const dataRef = database.collection('User').doc(username);
-      
-        dataRef.set({
-          1:newArray[0],
-          2:newArray[1],
-          3:newArray[2],
-          4:newArray[3],
-          5:newArray[4],
-          6:newArray[5],
-          7:newArray[6],
-        })
+      const dataToUpdate = {};
+    newArray.forEach((chunk, index) => {
+      dataToUpdate[index + 1] = chunk;
+}    );
+        dataRef.set(dataToUpdate)
         .then(function(){
           alert("Write Success.");
         })
