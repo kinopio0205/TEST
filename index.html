@@ -26,8 +26,9 @@
   <style>
     form {
         background: url('Image.JPG') no-repeat;
-        background-size: cover; /* 背景圖片大小應覆蓋整個表單 */
-        /* 其他樣式... */
+        background-position : right center;
+        background-size: cover; 
+        width:50%;
     }
     body {
       font-family: Arial, sans-serif;
@@ -36,7 +37,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
     }
 
     .container {
@@ -72,20 +72,40 @@
     button:hover {
       background-color: #45a049;
     }
+
+         #dynamicCheckboxesContainer {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 兩列，每列等寬 */
+            grid-gap: 10px; /* 列和行之間的間距 */
+        }
+
+        /* 控件的樣式 */
+        .grid-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* 讓內部的表單擴展滿整個網格行 */
+        #nestedForm {
+            grid-column: span 2;
+        }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h2>Hi User</h2>
+    <h2 id="greeting">Login</h2>
     <form id="loginForm">
 
       <label for="username">Username:</label>
-      <input type="text" style = "width: 100%;" id="username" name="username" required>
-
+      <br>
+      <input type="text" style = "width: 50%; margin-left: 0px;" id="username" name="username" required>
+      <br>
       <label for="password">Password:</label>
-      <input type="password" style = "width: 100%;" id="password" name="password" required>
-
+      <br>
+      <input type="password" style = "width: 50%; margin-left: 0px;" id="password" name="password" required>
+      <br>
       <button type="button" onclick="readData()">ReadData</button>
     </form>
     <div id="dynamicCheckboxesContainer" style="display: none;">
@@ -149,6 +169,8 @@
                 const data = doc.data();  
             
               if(data["password"] == password){
+                var greetingElement = document.getElementById("greeting");
+                greetingElement.innerText = "Hello," + username +"!"; // 修改文字內容
                 document.getElementById("loginForm").style.display = "none";
                 TimeMonday = data["1"];
                 TimeTuesday = data["2"];
