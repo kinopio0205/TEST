@@ -219,7 +219,7 @@
         else
         {
           Promise.all([
-             database.collection('User').doc("UserAccount").update([AccountAdd]:"123"),               
+             database.collection('User').doc("UserAccount").update({[AccountAdd]:"123"}),               
             database.collection('User').doc(AccountAdd).set(NewArray, { merge: true })
             ])
         .then(function(){
