@@ -331,6 +331,7 @@
                 newGridItem.className = 'grid-item';
                 newGridItem.textContent = LabelData.label +" ( "+LabelData.date + " ) ";
                 newGridItem.appendChild(document.createElement('br'));
+                newGridItem.appendChild(document.createElement('br'));
                 // 遍歷數據，動態生成 checkbox
                 dataCB.forEach(function (checkboxData) {
                 // 創建 checkbox 元素
@@ -367,7 +368,6 @@
                   buttonElement.addEventListener("click", WriteData);
                    container.appendChild(buttonElement);
                   document.getElementById("dynamicCheckboxesContainer").style.display = "grid";      
-                  console.log("读取的数据：", data);
       })
       .catch(error => {
       console.error("读取数据时发生错误：", error);
