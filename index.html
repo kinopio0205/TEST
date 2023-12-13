@@ -135,6 +135,7 @@
       <br>
       <button type="button" onclick="ChangePassword()">Confirm</button>
       <br>
+      <br>
       <button type="button" onclick="OpenPassword(false)">Cancel</button>
     </form>
      <form id="AccountForm" style="display: none;">
@@ -144,13 +145,20 @@
       <br>
       <button type="button" onclick="AddAccount()">Add</button>
       <br>
+       <br>
       <button type="button" onclick="DeleteAccount()">Delete</button>
       <br>
+       <br>
       <button type="button" onclick="OpenPassword(false)">Exit</button>
     </form>
     <div id="dynamicCheckboxesContainer" style="display: none;">    </div>
 
   <script>
+    var timestamp = Date.now();
+    var currentDate = new Date();
+    var dayOfWeek = currentDate.getDay();
+    dayOfWeek=dayOfWeek===0?7:dayOfWeek;
+    currentDate.setDate(currentDate.getDate() + 8-dayOfWeek);
     var All = new Array(35).fill("X");
     var NewArray =  {
     1: "XXXXX",
@@ -161,14 +169,19 @@
       6: "XXXXX",
       7: "XXXXX"
   };
+    function calculateDynamicDate(offset) {
+    var NewDate = new Date();
+    NewDate.setDate(currentDate.getDate() + offset);
+    return NewDate;
+}
        var dataWeek = [
-                   { label: 'Monday:'},
-                { label: 'Tuesday:'},
-                { label: 'Wednesday:'},
-                 { label: 'Thursday:'},
-                  { label: 'Friday:'},
-                  { label: 'Saturday:'},
-                  { label: 'Sunday:'}
+                   { label: 'Monday:' , date:calculateDynamicDate(0)},
+                { label: 'Tuesday:', date:calculateDynamicDate(1)},
+                { label: 'Wednesday:', date:calculateDynamicDate(2)},
+                 { label: 'Thursday:', date:calculateDynamicDate(3)},
+                  { label: 'Friday:', date:calculateDynamicDate(4)},
+                  { label: 'Saturday:', date:calculateDynamicDate(5)},
+                  { label: 'Sunday:', date:calculateDynamicDate(6)}
                 ];
        var dataCB = [
                 { label: '09:20~12:00'},
@@ -315,7 +328,7 @@
                               // 在容器中创建新的子控件元素
                 var newGridItem = document.createElement('div');
                 newGridItem.className = 'grid-item';
-                newGridItem.textContent = LabelData.label;
+                newGridItem.textContent = LabelData.label +" ( "+LabelData.date + " ) ";
                 newGridItem.appendChild(document.createElement('br'));
                 // 遍歷數據，動態生成 checkbox
                 dataCB.forEach(function (checkboxData) {
