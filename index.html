@@ -133,22 +133,108 @@
       <br>
       <input type="newpassword" style = "width: 50%; margin-left: 0px;" id="newpassword" name="newpassword" required>
       <br>
-      <label for="newpasswordC">New Password Check:</label>
-      <br>
-      <input type="newpasswordC" style = "width: 50%; margin-left: 0px;" id="newpasswordC" name="newpasswordC" required>
-      <br>
       <button type="button" onclick="OpenPassword(false)">Confirm</button>
+    </form>
+     <form id="AccountForm" style="display: none;">
+      <label for="accountadd">新用戶名稱:</label>
+      <br>
+      <input type="accountadd" style = "width: 50%; margin-left: 0px;" id="accountadd" name="accountadd" required>
+      <br>
+      <button type="button" onclick="AddAccount()">Add</button>
+      <br>
+      <button type="button" onclick="DeleteAccount()">Delete</button>
     </form>
     <div id="dynamicCheckboxesContainer" style="display: none;">    </div>
 
   <script>
     var All = new Array(35).fill("X");
+    var NewArray =  {
+    1: "XXXXX",
+    2: "XXXXX",
+    3: "XXXXX",
+    4: "XXXXX",
+      5: "XXXXX",
+      6: "XXXXX",
+      7: "XXXXX"
+  };
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-     
+     var deletename = document.getElementById("deletename").value;
     function OpenPassword(IsOpen) {
       document.getElementById("ChooseForm").style.display = IsOpen?"block":"none";
-      document.getElementById("PasswordForm").style.display = IsOpen?"none":"block";
+      if(username==="admin")
+      {
+          document.getElementById("AccountForm").style.display = IsOpen?"none":"block";
+      }
+      else
+      {
+          document.getElementById("PasswordForm").style.display = IsOpen?"none":"block";
+      }
+    }
+    function ChangePassword(){
+      
+          var passwordOld = document.getElementById("oldpassword").value;
+      if(oldpassword == password)
+      {
+          var passwordNew= document.getElementById("newpassword").value;
+          database.collection('User').doc("UserAccount").set({username:passwordnew})
+         .then(function(){
+          alert("修改完成.");
+        })
+        .catch(function(error){
+          alert("修改失敗: ",error);
+        });
+      }
+      else
+      {
+        alert("舊密碼錯誤");
+      }
+      }
+
+    function AddAccount(){
+          
+        var AccountAdd= document.getElementById("accountadd").value;
+        if(AccountAdd.trim()==="")
+        {
+          alert("新帳戶名稱不得為空");
+        }
+        else
+        {
+          Promise.All([
+             database.collection('User').doc("UserAccount").set({AccountAdd:"123"}),               
+            database.collection('User').doc(AccountAdd).set(NewArray, { merge: true })
+            ])
+        .then(function(){
+          alert("Add Success.");
+        })
+        .catch(function(error){
+          alert("Add Error: ",error);
+        });
+        }
+
+
+      
+    }
+    function DeleteAccount(){
+          const dataRef = database.collection('User').doc(username);
+
+          // 要删除的密码字段名
+          const passwordFieldName = 'password';
+
+          // 创建一个包含要删除字段的对象
+          const fieldsToDelete = {};
+          fieldsToDelete[passwordFieldName] = firebase.firestore.FieldValue.delete();
+           Promise.All([
+          // 使用 update 方法删除密码字段
+              dataRef.update(fieldsToDelete),
+               database.collection('User').doc(deletename).delete()
+             ])
+          .then(() => {
+           console.log(deletename+`已成功删除`);
+            })
+        .catch((error) => {
+          console.error(deletename+`删除时发生错误：`, error);
+            });      
     }
    function Login(){
         username = document.getElementById("username").value;
