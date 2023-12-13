@@ -143,6 +143,8 @@
       <button type="button" onclick="AddAccount()">Add</button>
       <br>
       <button type="button" onclick="DeleteAccount()">Delete</button>
+      <br>
+      <button type="button" onclick="OpenPassword(false)">Exit</button>
     </form>
     <div id="dynamicCheckboxesContainer" style="display: none;">    </div>
 
@@ -216,7 +218,7 @@
         }
         else
         {
-          Promise.All([
+          Promise.all([
              database.collection('User').doc("UserAccount").set({AccountAdd:"123"}),               
             database.collection('User').doc(AccountAdd).set(NewArray, { merge: true })
             ])
@@ -240,7 +242,7 @@
           // 创建一个包含要删除字段的对象
           const fieldsToDelete = {};
           fieldsToDelete[passwordFieldName] = firebase.firestore.FieldValue.delete();
-           Promise.All([
+           Promise.all([
           // 使用 update 方法删除密码字段
               dataRef.update(fieldsToDelete),
                database.collection('User').doc(deletename).delete()
