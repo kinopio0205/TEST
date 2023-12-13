@@ -161,14 +161,14 @@
     var password = document.getElementById("password").value;
      var deletename = document.getElementById("deletename").value;
     function OpenPassword(IsOpen) {
-      document.getElementById("ChooseForm").style.display = IsOpen?"block":"none";
+      document.getElementById("ChooseForm").style.display = !IsOpen?"block":"none";
       if(username==="admin")
       {
-          document.getElementById("AccountForm").style.display = IsOpen?"none":"block";
+          document.getElementById("AccountForm").style.display = !IsOpen?"none":"block";
       }
       else
       {
-          document.getElementById("PasswordForm").style.display = IsOpen?"none":"block";
+          document.getElementById("PasswordForm").style.display = !IsOpen?"none":"block";
       }
     }
     function ChangePassword(){
