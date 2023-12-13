@@ -218,10 +218,8 @@
         }
         else
         {
-          var dataToAdd = {};
-          dataToAdd[AccountAdd] = "123";
           Promise.all([
-             database.collection('User').doc("UserAccount").add(dataToAdd),               
+             database.collection('User').doc("UserAccount").update([AccountAdd]:"123"),               
             database.collection('User').doc(AccountAdd).set(NewArray, { merge: true })
             ])
         .then(function(){
