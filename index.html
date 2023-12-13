@@ -194,7 +194,7 @@
     function ChangePassword(){
       
           var passwordOld = document.getElementById("oldpassword").value;
-      if(oldpassword == password)
+      if(oldpassword === password)
       {
           var passwordNew= document.getElementById("newpassword").value;
           database.collection('User').doc("UserAccount").update({[username]:passwordnew})
@@ -207,7 +207,7 @@
       }
       else
       {
-        alert("舊密碼錯誤");
+        alert("舊密碼錯誤,"password);
       }
       }
 
