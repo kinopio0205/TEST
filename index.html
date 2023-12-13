@@ -200,6 +200,7 @@
           database.collection('User').doc("UserAccount").update({[username]:passwordNew})
          .then(function(){
           alert("修改完成.");
+           OpenPassword(false);
         })
         .catch(function(error){
           alert("修改失敗: ",error);
@@ -376,6 +377,9 @@
         dataRef.set(dataToUpdate)
         .then(function(){
           alert("Write Success.");
+          document.getElementById("dynamicCheckboxesContainer").style.display="none";
+           var greetingElement = document.getElementById("greeting");
+                greetingElement.innerText = "Bye," + username +"!"; // 修改文字內容
         })
         .catch(function(error){
           alert("Write Error: ",error);
