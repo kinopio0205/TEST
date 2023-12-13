@@ -172,7 +172,8 @@
     function calculateDynamicDate(offset) {
     var NewDate = new Date();
     NewDate.setDate(currentDate.getDate() + offset);
-    return NewDate;
+    var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    return NewDate.toLocaleDateString(undefined, options);
 }
        var dataWeek = [
                    { label: 'Monday:' , date:calculateDynamicDate(0)},
