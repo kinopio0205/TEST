@@ -154,8 +154,7 @@
     <div id="dynamicCheckboxesContainer" style="display: none;">    </div>
 
   <script>
-    var timestamp = Date.now();
-    var currentDate = new Date();
+    var currentDate = Date.now();
     var dayOfWeek = currentDate.getDay();
     dayOfWeek=dayOfWeek===0?7:dayOfWeek;
     currentDate.setDate(currentDate.getDate() + 8-dayOfWeek);
