@@ -155,8 +155,13 @@
 
   <script>
     var currentDate = new Date();
-    var dayOfWeek = currentDate.getDay();
-        alert("星期: ",dayOfWeek);
+    try{
+        var dayOfWeek = currentDate.getDay();
+    }
+    catch(error)
+    {
+        alert(error.message);
+    }
     dayOfWeek=dayOfWeek===0?7:dayOfWeek;
     currentDate.setDate(currentDate.getDate() + 8-dayOfWeek);
             alert("日期: ",currentDate);
