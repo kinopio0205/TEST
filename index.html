@@ -154,10 +154,12 @@
     <div id="dynamicCheckboxesContainer" style="display: none;">    </div>
 
   <script>
-    var currentDate = Date.now();
+    var currentDate = new Date();
     var dayOfWeek = currentDate.getDay();
+        alert("星期: ",dayOfWeek);
     dayOfWeek=dayOfWeek===0?7:dayOfWeek;
     currentDate.setDate(currentDate.getDate() + 8-dayOfWeek);
+            alert("日期: ",currentDate);
     var All = new Array(35).fill("X");
     var NewArray =  {
     1: "XXXXX",
