@@ -132,11 +132,11 @@
     <h2 id="greeting">Login</h2>
     <form id="loginForm">
 
-      <label for="username">Username:</label>
+      <label for="username">UserName:</label>
       <br>
       <input type="text" style = "width: 50%; margin-left: 0px;" id="username" name="username" required>
       <br>
-      <label for="password">Password:</label>
+      <label for="password">通關密語:</label>
       <br>
       <input type="password" style = "width: 50%; margin-left: 0px;" id="password" name="password" required>
       <br>
@@ -358,6 +358,11 @@
     }
    function Login(){
         username = document.getElementById("username").value;
+        if(username.trim()==="")
+        {
+          alert("搞啥呢，名字都沒打!");
+          return;
+        }
         password = document.getElementById("password").value; 
          console.log("Username：", username);
         var dataRef = database.collection('User').doc("UserAccount");
@@ -374,7 +379,7 @@
                 document.getElementById("ChooseHotel").style.display = "block";
                
         }else{
-      console.log("文檔不存在");
+         alert("通關密語錯誤!");
       }
    
       })
