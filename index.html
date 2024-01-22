@@ -51,7 +51,8 @@
       width:500px;
     }
     .carousel {
-            max-height: 300px; /* 设置轮播框的最大高度 */
+            max-height: 500px; /* 设置轮播框的最大高度 */
+            overflow: hidden; /* 隐藏超出轮播框的内容 */
         }
     .hotel-option {
             border: 1px solid #ccc;
@@ -61,9 +62,9 @@
         }
 
     .carousel img {
-            width: 100%; /* 图片宽度100%，确保适应轮播框 */
-          
-            object-fit: contain; /* 图片完全显示并保持纵横比 */
+           width: auto; /* 将图片的宽度设置为自动 */
+          height: 100%; /* 将图片的高度设置为100%，确保纵横比保持不变 */
+          object-fit: contain; /* 图片完全显示并保持纵横比 */
             border-radius: 5px;
         }
      .slick-dots {
