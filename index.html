@@ -24,7 +24,8 @@
   const database = firebase.firestore();
   </script>
 
-
+   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
   
   <style>
     form {
@@ -65,6 +66,9 @@
             height: auto; /* 自动计算高度，保持原始宽高比 */
             object-fit: contain; /* 图片完全显示并保持纵横比 */
             border-radius: 5px;
+        }
+     .slick-dots {
+            bottom: 10px; /* 调整dots的位置，确保它们可见 */
         }
     label {
       display: 'inline-block';
@@ -172,8 +176,6 @@
     </form>
     <div id="dynamicCheckboxesContainer" style="display: none;">    </div>
   <h2>飯店投票</h2>
-   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <div class="hotel-option">
         <div id="carousel1" class="carousel">
             <img src="h1i1.jpg" alt="">
