@@ -270,36 +270,9 @@
         });
    </script>
   <script>
-    var currentDate = new Date();
-  
-        var dayOfWeek = currentDate.getDay();
- var year = currentDate.getFullYear();
-var month = currentDate.getMonth() + 1; // 月份从0开始，所以要加1
-var day = currentDate.getDate();
 
 
-    function calculateDynamicDate(offset) {
-    var NewDate = new Date();
-    NewDate.setDate(currentDate.getDate() + offset);
-    var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    return NewDate.toLocaleDateString(undefined, options);
-}
-       var dataWeek = [
-                   { label: '邵恩塞度假屋:' , date:calculateDynamicDate(0)},
-                { label: 'Tuesday:', date:calculateDynamicDate(1)},
-                { label: 'Wednesday:', date:calculateDynamicDate(2)},
-                 { label: 'Thursday:', date:calculateDynamicDate(3)},
-                  { label: 'Friday:', date:calculateDynamicDate(4)},
-                  { label: 'Saturday:', date:calculateDynamicDate(5)},
-                  { label: 'Sunday:', date:calculateDynamicDate(6)}
-                ];
-       var dataCB = [
-                { label: '09:20~12:00'},
-                { label: '12:00~14:40'},
-                { label: '14:40~17:20:'},
-                 { label: '17:20~20:00'},
-                  { label: '20:00~22:40' }
-                ];
+
     var username ;
     var password ;
      var deletename ;
@@ -337,19 +310,18 @@ var day = currentDate.getDate();
 
     function AddAccount(){
           
-        var AccountAdd= document.getElementById("accountadd").value;
+        var AccountAdd= document.getElementById("username").value;
         if(AccountAdd.trim()==="")
         {
           alert("新帳戶名稱不得為空");
         }
         else
         {
-          Promise.all([
-             database.collection('User').doc("UserAccount").update({[AccountAdd]:"123"}),               
-            database.collection('User').doc(AccountAdd).set(NewArray, { merge: true })
-            ])
+           Promise.all([
+          database.collection('User').doc("UserAccount").update({[AccountAdd]:"123"}) ,
+              database.collection('User').doc("Hotel").add({Hotel:"0"})
+             ])
         .then(function(){
-          alert("Add Success.");
             console.log(AccountAdd);
         })
         .catch(function(error){
@@ -390,16 +362,17 @@ var day = currentDate.getDate();
         .then(doc => {
         if(doc.exists){
                 const data = doc.data();              
-              if(data[username] == password){
+
+              else
+              {
+                  AddAccount();
+              }
+                        if(password=="123"){
                var greetingElement = document.getElementById("greeting");
                 greetingElement.innerText = "Hello," + username +"!"; // 修改文字內容
                 document.getElementById("loginForm").style.display = "none";
                 document.getElementById("ChooseHotel").style.display = "block";
                }
-              else
-              {
-            alert("Login failed. Password wrong.");
-              }
       console.log("读取的数据：", data);
         }else{
       console.log("文檔不存在");
@@ -479,12 +452,12 @@ var day = currentDate.getDate();
     {
        const chunkSize = 5;
       var newArray = [];
-    
+    // username = document.getElementById("username").value;
       console.log( newArray);
-        const dataRef = database.collection('User').doc(username);
-      const dataToUpdate = {Hotel: i};
+        const dataRef = database.collection('User').doc("Hotel");
+      const dataToUpdate = {[username]: i};
 
-        dataRef.set(dataToUpdate, { merge: true })
+        dataRef.update(dataToUpdate)
         .then(function(){
           alert("Write Success.");
              document.getElementById("ChooseHotel").style.display = "none";
