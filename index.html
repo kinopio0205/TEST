@@ -363,7 +363,7 @@
         dataRef.get()
         .then(doc => {
            if(password=="123"){
-              if(!doc.exists){
+              if(!doc.(username).get().exists){
                 AddAccount();
                 }
                       
