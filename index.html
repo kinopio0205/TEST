@@ -46,7 +46,18 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       width:500px;
     }
+    .hotel-option {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
 
+    .hotel-option img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
     label {
       display: 'inline-block';
       margin-bottom: 8px;
@@ -76,7 +87,7 @@
          #dynamicCheckboxesContainer {
             display: grid;
             grid-template-columns: repeat(2, 1fr); /* 兩列，每列等寬 */
-           grid-template-rows: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
             grid-gap: 10px; /* 列和行之間的間距 */
         }
 
@@ -152,7 +163,37 @@
       <button type="button" onclick="OpenPassword(false)">Exit</button>
     </form>
     <div id="dynamicCheckboxesContainer" style="display: none;">    </div>
+  <h2>飯店投票</h2>
 
+    <div class="hotel-option">
+        <div id="carousel1" class="carousel">
+            <img src="hotel1_1.jpg" alt="Hotel 1 - Image 1">
+            <img src="hotel1_2.jpg" alt="Hotel 1 - Image 2">
+            <img src="hotel1_3.jpg" alt="Hotel 1 - Image 3">
+        </div>
+        <p>飯店1 - ￥1000</p>
+        <button class="vote-button" onclick="vote('hotel1')">投票</button>
+    </div>
+
+    <div class="hotel-option">
+        <div id="carousel2" class="carousel">
+            <img src="hotel2_1.jpg" alt="Hotel 2 - Image 1">
+            <img src="hotel2_2.jpg" alt="Hotel 2 - Image 2">
+            <img src="hotel2_3.jpg" alt="Hotel 2 - Image 3">
+        </div>
+        <p>飯店2 - ￥800</p>
+        <button class="vote-button" onclick="vote('hotel2')">投票</button>
+    </div>
+
+    <div class="hotel-option">
+        <div id="carousel3" class="carousel">
+            <img src="hotel3_1.jpg" alt="Hotel 3 - Image 1">
+            <img src="hotel3_2.jpg" alt="Hotel 3 - Image 2">
+            <img src="hotel3_3.jpg" alt="Hotel 3 - Image 3">
+        </div>
+        <p>飯店3 - ￥1200</p>
+        <button class="vote-button" onclick="vote('hotel3')">投票</button>
+    </div>
   <script>
     var currentDate = new Date();
   
@@ -183,7 +224,7 @@ console.log("当前日期：" + year + "-" + month + "-" + day);
     return NewDate.toLocaleDateString(undefined, options);
 }
        var dataWeek = [
-                   { label: 'Monday:' , date:calculateDynamicDate(0)},
+                   { label: '邵恩塞度假屋:' , date:calculateDynamicDate(0)},
                 { label: 'Tuesday:', date:calculateDynamicDate(1)},
                 { label: 'Wednesday:', date:calculateDynamicDate(2)},
                  { label: 'Thursday:', date:calculateDynamicDate(3)},
@@ -314,19 +355,7 @@ console.log("当前日期：" + year + "-" + month + "-" + day);
       dataRef.get()
         .then(function(doc){
           document.getElementById("ChooseForm").style.display = "none";
-          if(doc.exists){
-                
-                const data = doc.data();  
-                var g = 0 ;
-                for(var k =1;k<=7;k++)
-                  {
-                    for(var j=0;j<5;j++)
-                      {                    
-                        All[g] = data[k][j];
-                        g++;
-                          }
-                  }
-          }
+         
                 var index =0;
              
                 // 獲取包含動態生成 checkbox 的容器元素
