@@ -7,6 +7,7 @@
   <!-- 引入 Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>  
   const firebaseConfig = {
   apiKey: "AIzaSyA9qyQG92X8jT81DL43OqdOswx2GPcPnkE",
@@ -196,7 +197,7 @@
         </div>
         <p>邵恩塞度假屋 - 一個人平均  TWD 1213 </p>
          <p>分房 - 3房 (2單人) + (3單人合室) + (2單人合室)</p>
-        <button class="vote-button" onclick="openNewWindow('https://www.booking.com/hotel/jp/shounsai.zh-tw.html?aid=304142&label=gen173nr-1FCAMYjQQo5wFCCWx1bmctdC1hbkgwWARo5wGIAQGYATC4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Aoe9t60GwAIB0gIkNTEyNjI0ZjQtYzBjMC00OWMxLTkwZGYtYzVhYzNhNjQ5Mzlh2AIF4AIB&sid=11b82c8d6688b49dda43600ae986058f&all_sr_blocks=294924101_346289470_0_0_0;checkin=2024-06-07;checkout=2024-06-09;dest_id=-235402;dest_type=city;dist=0;group_adults=7;group_children=0;hapos=11;highlighted_blocks=294924101_346289470_0_0_0;hpos=11;matching_block_id=294924101_346289470_0_0_0;nflt=distance%3D1000;no_rooms=1;req_adults=7;req_children=0;room1=A%2CA%2CA%2CA%2CA%2CA%2CA;sb_price_type=total;sr_order=popularity;sr_pri_blocks=294924101_346289470_0_0_0__8000000;srepoch=1705903648;srpvid=bfcd1756229600ff;type=total;ucfs=1&#_')">前往</button>
+        <button class="vote-button" onclick="openNewWindow('https://www.booking.com/hotel/jp/shounsai.zh-tw.html?aid=304142&label=gen173nr-1FCAMYjQQo5wFCCWx1bmctdC1hbkgwWARo5wGIAQGYATC4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Aoe9t60GwAIB0gIkNTEyNjI0ZjQtYzBjMC00OWMxLTkwZGYtYzVhYzNhNjQ5Mzlh2AIF4AIB&sid=11b82c8d6688b49dda43600ae986058f&all_sr_blocks=294924101_346289470_0_0_0;checkin=2024-06-07;checkout=2024-06-09;dest_id=-235402;dest_type=city;dist=0;group_adults=7;group_children=0;hapos=11;highlighted_blocks=294924101_346289470_0_0_0;hpos=11;matching_block_id=294924101_346289470_0_0_0;nflt=distance%3D1000;no_rooms=1;req_adults=7;req_children=0;room1=A%2CA%2CA%2CA%2CA%2CA%2CA;sb_price_type=total;sr_order=popularity;sr_pri_blocks=294924101_346289470_0_0_0__8000000;srepoch=1705903648;srpvid=bfcd1756229600ff;type=total;ucfs=1&#_')">前往連結</button>
        <button class="vote-button" onclick="WriteData(1)">投票</button>
     </div>
 
@@ -212,7 +213,7 @@
         </div>
         <p>宿ZEN - 一個人平均  TWD 1016</p>
         <p>分房 - 2房各2張雙人床</p>
-       <button class="vote-button" onclick="openNewWindow('https://www.booking.com/hotel/jp/su-zen.zh-tw.html?aid=304142&label=gen173nr-1FCAMYjQQo5wFCCWx1bmctdC1hbkgwWARo5wGIAQGYATC4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Aoe9t60GwAIB0gIkNTEyNjI0ZjQtYzBjMC00OWMxLTkwZGYtYzVhYzNhNjQ5Mzlh2AIF4AIB&sid=11b82c8d6688b49dda43600ae986058f&atlas_src=hp_iw_title&checkin=2024-06-07&checkout=2024-06-09&dist=0&group_adults=7&group_children=0&no_rooms=1&room1=A%2CA%2CA%2CA%2CA%2CA%2CA&sb_price_type=total&srepoch=1705904169&srpvid=eef9175ea9f700de&type=total&#_')">前往</button>
+       <button class="vote-button" onclick="openNewWindow('https://www.booking.com/hotel/jp/su-zen.zh-tw.html?aid=304142&label=gen173nr-1FCAMYjQQo5wFCCWx1bmctdC1hbkgwWARo5wGIAQGYATC4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Aoe9t60GwAIB0gIkNTEyNjI0ZjQtYzBjMC00OWMxLTkwZGYtYzVhYzNhNjQ5Mzlh2AIF4AIB&sid=11b82c8d6688b49dda43600ae986058f&atlas_src=hp_iw_title&checkin=2024-06-07&checkout=2024-06-09&dist=0&group_adults=7&group_children=0&no_rooms=1&room1=A%2CA%2CA%2CA%2CA%2CA%2CA&sb_price_type=total&srepoch=1705904169&srpvid=eef9175ea9f700de&type=total&#_')">前往連結</button>
      <button class="vote-button" onclick="WriteData(2)">投票</button>
     </div>
 
@@ -231,7 +232,7 @@
         </div>
         <p>Tabiyado Chirin - 一個人平均  TWD 1003</p>
         <p>分房 - 3房 (1雙人) + (3單人合室) + (2單人合室)</p>
-        <button class="vote-button" onclick="openNewWindow('https://www.booking.com/hotel/jp/tabiyado-chirin.zh-tw.html?aid=304142&label=gen173nr-1FCAMYjQQo5wFCCWx1bmctdC1hbkgwWARo5wGIAQGYATC4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Aoe9t60GwAIB0gIkNTEyNjI0ZjQtYzBjMC00OWMxLTkwZGYtYzVhYzNhNjQ5Mzlh2AIF4AIB&sid=11b82c8d6688b49dda43600ae986058f&atlas_src=hp_iw_title&checkin=2024-06-07&checkout=2024-06-09&dist=0&group_adults=7&group_children=0&no_rooms=1&room1=A%2CA%2CA%2CA%2CA%2CA%2CA&sb_price_type=total&srepoch=1705910280&srpvid=e4bf377b421c0118&type=total&#_')">前往</button>
+        <button class="vote-button" onclick="openNewWindow('https://www.booking.com/hotel/jp/tabiyado-chirin.zh-tw.html?aid=304142&label=gen173nr-1FCAMYjQQo5wFCCWx1bmctdC1hbkgwWARo5wGIAQGYATC4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Aoe9t60GwAIB0gIkNTEyNjI0ZjQtYzBjMC00OWMxLTkwZGYtYzVhYzNhNjQ5Mzlh2AIF4AIB&sid=11b82c8d6688b49dda43600ae986058f&atlas_src=hp_iw_title&checkin=2024-06-07&checkout=2024-06-09&dist=0&group_adults=7&group_children=0&no_rooms=1&room1=A%2CA%2CA%2CA%2CA%2CA%2CA&sb_price_type=total&srepoch=1705910280&srpvid=e4bf377b421c0118&type=total&#_')">前往連結</button>
         <button class="vote-button" onclick="WriteData(3)">投票</button>
     </div>
 
@@ -249,7 +250,7 @@
         </div>
         <p>Guest House - 一個人平均  TWD 895</p>
         <p>分房 - 2房各2張雙人床</p>
-        <button class="vote-button" onclick="openNewWindow('https://www.booking.com/hotel/jp/guest-house-one-more-heart-kyoto-station-south-5.zh-tw.html?aid=304142&label=gen173nr-1FCAMYjQQo5wFCCWx1bmctdC1hbkgwWARo5wGIAQGYATC4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Aoe9t60GwAIB0gIkNTEyNjI0ZjQtYzBjMC00OWMxLTkwZGYtYzVhYzNhNjQ5Mzlh2AIF4AIB&sid=11b82c8d6688b49dda43600ae986058f&all_sr_blocks=583165803_383465142_7_0_0;checkin=2024-06-07;checkout=2024-06-09;dest_id=-235402;dest_type=city;dist=0;group_adults=7;group_children=0;hapos=39;highlighted_blocks=583165803_383465142_7_0_0;hpos=14;matching_block_id=583165803_383465142_7_0_0;nflt=distance%3D1000%3Bdistance%3D3000;no_rooms=1;req_adults=7;req_children=0;room1=A%2CA%2CA%2CA%2CA%2CA%2CA;sb_price_type=total;sr_order=price;sr_pri_blocks=583165803_383465142_7_0_0__5900000;srepoch=1705910821;srpvid=bfcd1756229600ff;type=total;ucfs=1&#_')">前往</button>
+        <button class="vote-button" onclick="openNewWindow('https://www.booking.com/hotel/jp/guest-house-one-more-heart-kyoto-station-south-5.zh-tw.html?aid=304142&label=gen173nr-1FCAMYjQQo5wFCCWx1bmctdC1hbkgwWARo5wGIAQGYATC4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Aoe9t60GwAIB0gIkNTEyNjI0ZjQtYzBjMC00OWMxLTkwZGYtYzVhYzNhNjQ5Mzlh2AIF4AIB&sid=11b82c8d6688b49dda43600ae986058f&all_sr_blocks=583165803_383465142_7_0_0;checkin=2024-06-07;checkout=2024-06-09;dest_id=-235402;dest_type=city;dist=0;group_adults=7;group_children=0;hapos=39;highlighted_blocks=583165803_383465142_7_0_0;hpos=14;matching_block_id=583165803_383465142_7_0_0;nflt=distance%3D1000%3Bdistance%3D3000;no_rooms=1;req_adults=7;req_children=0;room1=A%2CA%2CA%2CA%2CA%2CA%2CA;sb_price_type=total;sr_order=price;sr_pri_blocks=583165803_383465142_7_0_0__5900000;srepoch=1705910821;srpvid=bfcd1756229600ff;type=total;ucfs=1&#_')">前往連結</button>
         <button class="vote-button" onclick="WriteData(4)">投票</button>
     </div>
       <div class="hotel-option">
@@ -469,7 +470,13 @@
           alert("Write Error: ",error);
         });
     }
-   
+   function showAlert() {
+    // 显示包含图片的弹出框
+    Swal.fire({
+      imageUrl: 'GG.jpg',
+      imageAlt: '想都別想，乖乖給我選'
+    });
+   }
   </script>
 
 </body>
