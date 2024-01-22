@@ -186,8 +186,7 @@
         </div>
         <p>邵恩塞度假屋 - 一個人平均  TWD 1213 </p>
          <p>分房 - 3房 (2單人) + (3單人合室) + (2單人合室)</p>
-         <p>https://www.booking.com/hotel/jp/shounsai.zh-tw.html?aid=304142&label=gen173nr-1FCAMYjQQo5wFCCWx1bmctdC1hbkgwWARo5wGIAQGYATC4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Aoe9t60GwAIB0gIkNTEyNjI0ZjQtYzBjMC00OWMxLTkwZGYtYzVhYzNhNjQ5Mzlh2AIF4AIB&sid=11b82c8d6688b49dda43600ae986058f&all_sr_blocks=294924101_346289470_0_0_0;checkin=2024-06-07;checkout=2024-06-09;dest_id=-235402;dest_type=city;dist=0;group_adults=7;group_children=0;hapos=11;highlighted_blocks=294924101_346289470_0_0_0;hpos=11;matching_block_id=294924101_346289470_0_0_0;nflt=distance%3D1000;no_rooms=1;req_adults=7;req_children=0;room1=A%2CA%2CA%2CA%2CA%2CA%2CA;sb_price_type=total;sr_order=popularity;sr_pri_blocks=294924101_346289470_0_0_0__8000000;srepoch=1705903648;srpvid=bfcd1756229600ff;type=total;ucfs=1&#_</p>
-        <button class="vote-button" onclick="vote('hotel1')">投票</button>
+        <button class="vote-button" onclick="openNewWindow("https://www.booking.com/hotel/jp/shounsai.zh-tw.html?aid=304142&label=gen173nr-1FCAMYjQQo5wFCCWx1bmctdC1hbkgwWARo5wGIAQGYATC4ARfIAQzYAQHoAQH4AQKIAgGoAgO4Aoe9t60GwAIB0gIkNTEyNjI0ZjQtYzBjMC00OWMxLTkwZGYtYzVhYzNhNjQ5Mzlh2AIF4AIB&sid=11b82c8d6688b49dda43600ae986058f&all_sr_blocks=294924101_346289470_0_0_0;checkin=2024-06-07;checkout=2024-06-09;dest_id=-235402;dest_type=city;dist=0;group_adults=7;group_children=0;hapos=11;highlighted_blocks=294924101_346289470_0_0_0;hpos=11;matching_block_id=294924101_346289470_0_0_0;nflt=distance%3D1000;no_rooms=1;req_adults=7;req_children=0;room1=A%2CA%2CA%2CA%2CA%2CA%2CA;sb_price_type=total;sr_order=popularity;sr_pri_blocks=294924101_346289470_0_0_0__8000000;srepoch=1705903648;srpvid=bfcd1756229600ff;type=total;ucfs=1&#_")">前往</button>
     </div>
 
     <div class="hotel-option">
@@ -436,6 +435,10 @@ var day = currentDate.getDate();
     });
     }
 
+        function openNewWindow(url) {
+            // 在新窗口中打开链接
+            window.open(url, '_blank');
+        }
     function WriteData()
     {
        const chunkSize = 5;
