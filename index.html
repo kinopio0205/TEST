@@ -360,14 +360,11 @@
         var dataRef = database.collection('User').doc("UserAccount");
         dataRef.get()
         .then(doc => {
-        if(doc.exists){
-                const data = doc.data();              
-
-              else
-              {
-                  AddAccount();
-              }
-                        if(password=="123"){
+           if(password=="123"){
+              if(!doc.exists){
+                AddAccount();
+                }
+                      
                var greetingElement = document.getElementById("greeting");
                 greetingElement.innerText = "Hello," + username +"!"; // 修改文字內容
                 document.getElementById("loginForm").style.display = "none";
@@ -377,6 +374,7 @@
         }else{
       console.log("文檔不存在");
       }
+   
       })
       .catch(error => {
       console.error("读取数据时发生错误：", error);
