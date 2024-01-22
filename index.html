@@ -23,6 +23,9 @@
   console.log(firebase);
   const database = firebase.firestore();
   </script>
+
+
+  
   <style>
     form {
         background: url('Image.JPG') no-repeat;
@@ -164,7 +167,8 @@
     </form>
     <div id="dynamicCheckboxesContainer" style="display: none;">    </div>
   <h2>飯店投票</h2>
-
+   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <div class="hotel-option">
         <div id="carousel1" class="carousel">
             <img src="h1i1.jpg" alt="">
@@ -200,6 +204,19 @@
         <p>飯店3 - ￥1200</p>
         <button class="vote-button" onclick="vote('hotel3')">投票</button>
     </div>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.carousel').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                dots: true
+            });
+        });
+   </script>
   <script>
     var currentDate = new Date();
   
