@@ -360,10 +360,10 @@
         password = document.getElementById("password").value; 
          console.log("Username：", username);
         var dataRef = database.collection('User').doc("UserAccount");
-        dataRef.get()
+        dataRef.get(username)
         .then(doc => {
            if(password=="123"){
-              if(!doc.(username).get().exists){
+              if(!doc.exists){
                 AddAccount();
                 }
                       
