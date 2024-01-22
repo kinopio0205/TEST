@@ -452,10 +452,12 @@
         }
     function WriteData(i)
     {
-       const chunkSize = 5;
-      var newArray = [];
-    // username = document.getElementById("username").value;
-      console.log( newArray);
+      if(i==5)
+      {
+         alert("想都別想，乖乖給我選!");
+          return;
+      }
+
         const dataRef = database.collection('User').doc("Hotel");
       const dataToUpdate = {[username]: i};
 
